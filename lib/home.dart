@@ -40,20 +40,58 @@ class _HomeMain extends State {
     // rerunning build methods fast, so that you can just
     // rebuild anything that needs updating rather than
     // having to individually changes instances of widgets.
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        ElevatedButton(
-          onPressed: _increment,
-          child: Text('Increment'),
-        ),
-        SizedBox(width: 16),
-        Expanded(
-          child: new Text('$_valores'),
+    return Scaffold(
+      //
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              // alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Align(
+                      child: new Text('$_valores'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              // alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _increment,
+                    child: Text('Acessar Valores'),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
 
-        // Text('Count: $_valores'),
-      ],
+        // children: <Widget>[
+        //   Container(
+        //     child: ElevatedButton(
+        //       onPressed: _increment,
+        //       child: Text('Acessar Valores'),
+        //     ),
+        //   ),
+        //   SizedBox(width: 16),
+        //   Container(
+        //     child: Expanded(
+        //       child: new Text('$_valores'),
+        //     ),
+        //   )
+
+        //   // Text('Count: $_valores'),
+        // ],
+      ),
     );
   }
 }
