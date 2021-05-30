@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import 'api/routes.dart';
@@ -13,6 +15,12 @@ class _Hospital extends State {
   // int _counter = 0;
   // final _bloc = BlocApi();
   var _valores = [];
+
+  _callValues() async {
+    var lista = await Api().getIdName()();
+    var valores = lista;
+    return valores;
+  }
 
   void _increment() async {
     var lista = await Api().getIdName()();
@@ -34,6 +42,7 @@ class _Hospital extends State {
 
   @override
   Widget build(BuildContext context) {
+    // var valores = _callValues();
     // This method is rerun every time setState is called,
     // for instance, as done by the _increment method above.
     // The Flutter framework has been optimized to make
@@ -41,33 +50,50 @@ class _Hospital extends State {
     // rebuild anything that needs updating rather than
     // having to individually changes instances of widgets.
 
-    return Scaffold(
-      //
+    return FutureBuilder(
+        future: _callValues(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return Text("Carregando...");
+          } else {
+            final valores = snapshot.data;
+            return ListView.builder(
+              itemCount: 13,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  height: 50,
+                  color: Colors.blueAccent,
+                  child: Center(
+                    child: Text('' + valores.toString()),
+                  ),
+                );
+              },
+            );
+          }
+        });
 
-      body: ListView(
-        children: [
-          // for (var i = 0; i < _valores.length; i++){
-          for (var item in _valores)
-            ListTile(
-              leading: Icon(Icons.map),
-              title: Text('Mapa'),
-            ),
+    //   children: [
+    //     // for (var i = 0; i < _valores.length; i++){
+    //     for (var item in _valores)
+    //       ListTile(
+    //         leading: Icon(Icons.map),
+    //         title: Text('Mapa'),
+    //       ),
 
-          // },
-          Center(
-            // alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: _increment,
-                  child: Text('Acessar Valores'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+    //     // },
+    //     Center(
+    //       // alignment: Alignment.center,
+    //       child: Row(
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         children: [
+    //           ElevatedButton(
+    //             onPressed: _increment,
+    //             child: Text('Acessar Valores'),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ],
+    // ),
   }
 }
