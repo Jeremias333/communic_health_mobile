@@ -1,3 +1,4 @@
+import 'package:communic_health_mobile/hospital.dart';
 import 'package:flutter/material.dart';
 import 'package:communic_health_mobile/home.dart';
 
@@ -99,10 +100,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeMain(),
-    Text(
-      "Tela Hospitais",
-      style: optionStyle,
-    ),
+    Hospital(),
     Text(
       "Tela Ajuda",
       style: optionStyle,

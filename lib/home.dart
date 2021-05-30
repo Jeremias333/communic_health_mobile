@@ -1,4 +1,3 @@
-// import 'package:communic_health_mobile/api/blocapi.dart';
 import 'package:communic_health_mobile/api/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -74,23 +73,6 @@ class _HomeMain extends State {
             ),
           ],
         ),
-
-        // children: <Widget>[
-        //   Container(
-        //     child: ElevatedButton(
-        //       onPressed: _increment,
-        //       child: Text('Acessar Valores'),
-        //     ),
-        //   ),
-        //   SizedBox(width: 16),
-        //   Container(
-        //     child: Expanded(
-        //       child: new Text('$_valores'),
-        //     ),
-        //   )
-
-        //   // Text('Count: $_valores'),
-        // ],
       ),
     );
   }
